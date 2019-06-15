@@ -36,4 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\OneDrive - Queen%27s University\GitHub\DellFanCmd\bzh_dell_smm_io_x64.sys">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

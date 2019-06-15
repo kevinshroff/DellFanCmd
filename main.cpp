@@ -20,54 +20,16 @@ int main(int argc, char* argv[])
     cout << "https://github.com/424778940z/bzh-windrv-dell-smm-io\n\n";
     cout << "Derived from \"Dell fan utility\" by 424778940z\n";
     cout << "https://github.com/424778940z/dell-fan-utility\n\n";
+	cout << "\n\n";
+	cout << "Edited to set fans to 100 on launch";
 
     if (argc != 2)
     {
-        usage();
-    }
-    else
-    {
         // Behavior variables.
-        bool disableEcFanControl = false;
+        bool disableEcFanControl = true;
         bool enableEcFanControl = false;
-        bool setFansTo100 = false;
+        bool setFansTo100 = true;
         bool useAlternateCommand = false;
-
-        // Figure out what was requested.
-        if (strcmp(argv[1], "ec-disable") == 0)
-        {
-            disableEcFanControl = true;
-            setFansTo100 = true;
-        }
-        else if (strcmp(argv[1], "ec-disable-nofanchg") == 0)
-        {
-            disableEcFanControl = true;
-        }
-        else if (strcmp(argv[1], "ec-enable") == 0)
-        {
-            enableEcFanControl = true;
-        }
-        else if (strcmp(argv[1], "ec-disable-alt") == 0)
-        {
-            disableEcFanControl = true;
-            setFansTo100 = true;
-            useAlternateCommand = true;
-        }
-        else if (strcmp(argv[1], "ec-disable-alt-nofanchg") == 0)
-        {
-            disableEcFanControl = true;
-            useAlternateCommand = true;
-        }
-        else if (strcmp(argv[1], "ec-enable-alt") == 0)
-        {
-            enableEcFanControl = true;
-            useAlternateCommand = true;
-        }
-        else
-        {
-            usage();
-            exit(3);
-        }
 
         // Execute request.
 
