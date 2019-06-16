@@ -21,15 +21,15 @@ bool useAlternateCommand = false;
 // Main program begins here.
 int main()
 {
-	cout << "DellFanCmd 1.0.0\n";
+	cout << "DellFanCmd 1.0.0 (modified)\n";
 	cout << "By Aaron Kelley\n";
 	cout << "Licensed under GPLv3\n";
 	cout << "Source code available at https://github.com/AaronKelley/DellFanCmd\n\n";
 	cout << "Dell SMM IO driver by 424778940z\n";
 	cout << "https://github.com/424778940z/bzh-windrv-dell-smm-io\n\n";
 	cout << "Derived from \"Dell fan utility\" by 424778940z\n";
-	cout << "https://github.com/424778940z/dell-fan-utility\n\n";
-	cout << "\n\n Modified by Kevin Shroff";
+	cout << "https://github.com/424778940z/dell-fan-utility \n\n";
+	cout << "Modified by Kevin Shroff\n\n";
 
 	// Load driver first.
 	loadDriver();
@@ -45,7 +45,7 @@ int main()
 	{
 		char input = 0;
 
-		cout << "Enter D - Return control of fan to EC \n";
+		cout << "\nEnter D - Return control of fan to EC \n";
 		cout << "Enter E - Set fan to MAX SPEED 100% & disable EC control \n\n";
 		cout << "D or E: " << endl;
 		cin >> input;
@@ -75,7 +75,7 @@ int main()
 
 }
 
-
+//Disable EC fan control
 void disableECFanControl()
 {
 	cout << "Attempting to disable EC control of the fan...\n";
@@ -92,6 +92,7 @@ void disableECFanControl()
 	cout << " ...Success.\n";
 }
 
+//Enable control of fans by EC
 void enableECFanControl()
 {
 	cout << "Attempting to enable EC control of the fan...\n";
@@ -109,6 +110,7 @@ void enableECFanControl()
 	cout << " ...Success.\n";
 }
 
+//Set both fans to max speed
 void setMaxFanSpeed()
 {
 	cout << "Setting fan 1 speed to maximum...\n";
@@ -121,6 +123,7 @@ void setMaxFanSpeed()
 
 	cout << "Setting fan 2 speed to maximum...\n";
 	result = dell_smm_io_set_fan_lv(DELL_SMM_IO_FAN2, DELL_SMM_IO_FAN_LV2);
+
 	if (result == -1)
 	{
 		cerr << "Failed.  (Maybe your system just has one fan?)\n";
@@ -128,8 +131,9 @@ void setMaxFanSpeed()
 
 	else
 	{
-		cout << "WARNING: CPU and GPU are not designed to run under load without active cooling.\n";
-		cout << "Make sure that you have alternate fan speed control measures in place.\n";
+		// no need for warning as fans are set to 100% when EC control disabled
+		//cout << "WARNING: CPU and GPU are not designed to run under load without active cooling.\n";
+		//cout << "Make sure that you have alternate fan speed control measures in place.\n";
 	}
 }
 
