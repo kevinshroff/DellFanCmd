@@ -67,6 +67,7 @@ int main()
 			enableEcFanControl = false;
 
 			disableECFanControl();
+			setMaxFanSpeed();
 		}
 
 		system("CLS");
